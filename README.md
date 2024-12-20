@@ -1,10 +1,10 @@
-# Incremental Convolutional Transformer for Baggage Threat Instance Segmentation
+# Regressor Driven Incremental Instance Segmentation for Baggage Threat Recognition
 <p align="justify">
-This repository contains the source code (developed using <b>TensorFlow 2.2.0</b> and <b>Keras</b>) and also some additional results of the proposed incremental convolutional transformer model.
+This repository contains the source code (developed using <b>TensorFlow 2.2.0</b>) of the proposed regressor-driven incremental instance segmentation framework for baggage threat recognition.
 </p>
 
 ## "Important" Models architectures are available in 'model_summary.txt', and the training folders hierarchy is given below:
-![folders](/images/hierarchy2.png)
+![folders](/images/bd_reg_inc_seg.png)
 
 ## Demo Videos and Additional Results -> [Google Drive](https://drive.google.com/file/d/1ksZ7zva-htZAcuJAbARP-vKVJZg0J7pY/view?usp=sharing)
 ## Installation and Configuration
@@ -21,8 +21,6 @@ This repository contains the source code (developed using <b>TensorFlow 2.2.0</b
 3) Download the desired dataset:
    - GDXray [URL](https://domingomery.ing.puc.cl/material/gdxray/)
    - SIXray [URL](https://github.com/MeioJane/SIXray)
-   - OPIXray [URL](https://github.com/OPIXray-author/OPIXray)
-   - COCO-2017 [URL](https://cocodataset.org/#download)
 4) Create the two folders named as 'trainingDataset' and 'testingDataset'.
 5) Put training images of SIXray, OPIXray, or GDXray dataset in '…\trainingDataset\trainImages_K' folder where 'K' represents the iteration or model instance.
 6) Put training annotation in '…\trainingDataset\trainGT_K' folder.
@@ -44,7 +42,7 @@ This repository contains the source code (developed using <b>TensorFlow 2.2.0</b
 1) Use 'trainer.py' to incrementally train the segmentation network. The following script will also save the model instances in the h5 file.
 2) Afterwards, use 'regressor.m' file to train the regression model. This script will also save the trained regression model in a mat file.
 3) Use 'tester.py' file to extract segmentation results for each model (the model results will be saved in 'segmentation_resultsK' folder.
-4) Use highlighter files to visualize instance segmentation results on GDXray, OPIXray and SIXray datasets, respectively.
+4) Use highlighter files to visualize instance segmentation results on GDXray and SIXray datasets, respectively.
 5) We have also provided some converter scripts to convert e.g. original SIXray XML annotations into MATLAB structures, to port TF keras models into MATLAB etc.
 6) Apart from this, the ‘results’ folder in this package contains some additional results obtained by the proposed framework.
 
@@ -54,10 +52,10 @@ This repository contains the source code (developed using <b>TensorFlow 2.2.0</b
 If you use this framework (or any part of this code in your research), please cite the following paper:
 
 ```
-@article{Hassan2024ICT,
-  title   = {Incremental Convolutional Transformer for Baggage Threat Detection},
-  author  = {Taimur Hassan and Bilal Hassan and Muhammad Owais and Divya Velayudhan and Jorge Dias and Mohammed Ghazal and Naoufel Werghi},
-  journal = {Pattern Recognition},
+@article{Nasim2024RDI,
+  title   = {Regressor Driven Incremental Instance Segmentation for Baggage Threat Recognition},
+  author  = {Ammara Nasim and Mahboob Anwar and Muhammad Owais and Samet Akcay and Divya Velayudhan and Muhammad Usman Akram and Mohammed Ghazal and Naoufel Werghi and Taimur Hassan},
+  journal = {Under Review in Engineering Applications of Artificial Intelligence},
   year = {2024}
 }
 ```
