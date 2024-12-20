@@ -22,7 +22,7 @@ This repository contains the source code (developed using <b>TensorFlow 2.2.0</b
    - GDXray [URL](https://domingomery.ing.puc.cl/material/gdxray/)
    - SIXray [URL](https://github.com/MeioJane/SIXray)
 4) Create the two folders named as 'trainingDataset' and 'testingDataset'.
-5) Put training images of SIXray, OPIXray, or GDXray dataset in '…\trainingDataset\trainImages_K' folder where 'K' represents the iteration or model instance.
+5) Put training images of SIXray or GDXray dataset in '…\trainingDataset\trainImages_K' folder where 'K' represents the iteration or model instance.
 6) Put training annotation in '…\trainingDataset\trainGT_K' folder.
 7) Put validation images in '…\trainingDataset\valImages_K' folder.
 8) Put validation annotations in '…\trainingDataset\valGT_K' folder.
