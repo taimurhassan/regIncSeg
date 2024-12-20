@@ -1,0 +1,715 @@
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to
+==================================================================================================
+ input_1 (InputLayer)           [(None, 576, 768, 3  0           []
+                                )]
+
+ conv1_pad (ZeroPadding2D)      (None, 582, 774, 3)  0           ['input_1[0][0]']
+
+ conv1_conv (Conv2D)            (None, 288, 384, 64  9472        ['conv1_pad[0][0]']
+                                )
+
+ conv1_bn (BatchNormalization)  (None, 288, 384, 64  256         ['conv1_conv[0][0]']
+                                )
+
+ conv1_relu (Activation)        (None, 288, 384, 64  0           ['conv1_bn[0][0]']
+                                )
+
+ pool1_pad (ZeroPadding2D)      (None, 290, 386, 64  0           ['conv1_relu[0][0]']
+                                )
+
+ pool1_pool (MaxPooling2D)      (None, 144, 192, 64  0           ['pool1_pad[0][0]']
+                                )
+
+ conv2_block1_1_conv (Conv2D)   (None, 144, 192, 64  4160        ['pool1_pool[0][0]']
+                                )
+
+ conv2_block1_1_bn (BatchNormal  (None, 144, 192, 64  256        ['conv2_block1_1_conv[0][0]']
+ ization)                       )
+
+ conv2_block1_1_relu (Activatio  (None, 144, 192, 64  0          ['conv2_block1_1_bn[0][0]']
+ n)                             )
+
+ conv2_block1_2_conv (Conv2D)   (None, 144, 192, 64  36928       ['conv2_block1_1_relu[0][0]']
+                                )
+
+ conv2_block1_2_bn (BatchNormal  (None, 144, 192, 64  256        ['conv2_block1_2_conv[0][0]']
+ ization)                       )
+
+ conv2_block1_2_relu (Activatio  (None, 144, 192, 64  0          ['conv2_block1_2_bn[0][0]']
+ n)                             )
+
+ conv2_block1_0_conv (Conv2D)   (None, 144, 192, 25  16640       ['pool1_pool[0][0]']
+                                6)
+
+ conv2_block1_3_conv (Conv2D)   (None, 144, 192, 25  16640       ['conv2_block1_2_relu[0][0]']
+                                6)
+
+ conv2_block1_0_bn (BatchNormal  (None, 144, 192, 25  1024       ['conv2_block1_0_conv[0][0]']
+ ization)                       6)
+
+ conv2_block1_3_bn (BatchNormal  (None, 144, 192, 25  1024       ['conv2_block1_3_conv[0][0]']
+ ization)                       6)
+
+ conv2_block1_add (Add)         (None, 144, 192, 25  0           ['conv2_block1_0_bn[0][0]',
+                                6)                                'conv2_block1_3_bn[0][0]']
+
+ conv2_block1_out (Activation)  (None, 144, 192, 25  0           ['conv2_block1_add[0][0]']
+                                6)
+
+ conv2_block2_1_conv (Conv2D)   (None, 144, 192, 64  16448       ['conv2_block1_out[0][0]']
+                                )
+
+ conv2_block2_1_bn (BatchNormal  (None, 144, 192, 64  256        ['conv2_block2_1_conv[0][0]']
+ ization)                       )
+
+ conv2_block2_1_relu (Activatio  (None, 144, 192, 64  0          ['conv2_block2_1_bn[0][0]']
+ n)                             )
+
+ conv2_block2_2_conv (Conv2D)   (None, 144, 192, 64  36928       ['conv2_block2_1_relu[0][0]']
+                                )
+
+ conv2_block2_2_bn (BatchNormal  (None, 144, 192, 64  256        ['conv2_block2_2_conv[0][0]']
+ ization)                       )
+
+ conv2_block2_2_relu (Activatio  (None, 144, 192, 64  0          ['conv2_block2_2_bn[0][0]']
+ n)                             )
+
+ conv2_block2_3_conv (Conv2D)   (None, 144, 192, 25  16640       ['conv2_block2_2_relu[0][0]']
+                                6)
+
+ conv2_block2_3_bn (BatchNormal  (None, 144, 192, 25  1024       ['conv2_block2_3_conv[0][0]']
+ ization)                       6)
+
+ conv2_block2_add (Add)         (None, 144, 192, 25  0           ['conv2_block1_out[0][0]',
+                                6)                                'conv2_block2_3_bn[0][0]']
+
+ conv2_block2_out (Activation)  (None, 144, 192, 25  0           ['conv2_block2_add[0][0]']
+                                6)
+
+ conv2_block3_1_conv (Conv2D)   (None, 144, 192, 64  16448       ['conv2_block2_out[0][0]']
+                                )
+
+ conv2_block3_1_bn (BatchNormal  (None, 144, 192, 64  256        ['conv2_block3_1_conv[0][0]']
+ ization)                       )
+
+ conv2_block3_1_relu (Activatio  (None, 144, 192, 64  0          ['conv2_block3_1_bn[0][0]']
+ n)                             )
+
+ conv2_block3_2_conv (Conv2D)   (None, 144, 192, 64  36928       ['conv2_block3_1_relu[0][0]']
+                                )
+
+ conv2_block3_2_bn (BatchNormal  (None, 144, 192, 64  256        ['conv2_block3_2_conv[0][0]']
+ ization)                       )
+
+ conv2_block3_2_relu (Activatio  (None, 144, 192, 64  0          ['conv2_block3_2_bn[0][0]']
+ n)                             )
+
+ conv2_block3_3_conv (Conv2D)   (None, 144, 192, 25  16640       ['conv2_block3_2_relu[0][0]']
+                                6)
+
+ conv2_block3_3_bn (BatchNormal  (None, 144, 192, 25  1024       ['conv2_block3_3_conv[0][0]']
+ ization)                       6)
+
+ conv2_block3_add (Add)         (None, 144, 192, 25  0           ['conv2_block2_out[0][0]',
+                                6)                                'conv2_block3_3_bn[0][0]']
+
+ conv2_block3_out (Activation)  (None, 144, 192, 25  0           ['conv2_block3_add[0][0]']
+                                6)
+
+ conv3_block1_1_conv (Conv2D)   (None, 72, 96, 128)  32896       ['conv2_block3_out[0][0]']
+
+ conv3_block1_1_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block1_1_conv[0][0]']
+ ization)
+
+ conv3_block1_1_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block1_1_bn[0][0]']
+ n)
+
+ conv3_block1_2_conv (Conv2D)   (None, 72, 96, 128)  147584      ['conv3_block1_1_relu[0][0]']
+
+ conv3_block1_2_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block1_2_conv[0][0]']
+ ization)
+
+ conv3_block1_2_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block1_2_bn[0][0]']
+ n)
+
+ conv3_block1_0_conv (Conv2D)   (None, 72, 96, 512)  131584      ['conv2_block3_out[0][0]']
+
+ conv3_block1_3_conv (Conv2D)   (None, 72, 96, 512)  66048       ['conv3_block1_2_relu[0][0]']
+
+ conv3_block1_0_bn (BatchNormal  (None, 72, 96, 512)  2048       ['conv3_block1_0_conv[0][0]']
+ ization)
+
+ conv3_block1_3_bn (BatchNormal  (None, 72, 96, 512)  2048       ['conv3_block1_3_conv[0][0]']
+ ization)
+
+ conv3_block1_add (Add)         (None, 72, 96, 512)  0           ['conv3_block1_0_bn[0][0]',
+                                                                  'conv3_block1_3_bn[0][0]']
+
+ conv3_block1_out (Activation)  (None, 72, 96, 512)  0           ['conv3_block1_add[0][0]']
+
+ conv3_block2_1_conv (Conv2D)   (None, 72, 96, 128)  65664       ['conv3_block1_out[0][0]']
+
+ conv3_block2_1_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block2_1_conv[0][0]']
+ ization)
+
+ conv3_block2_1_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block2_1_bn[0][0]']
+ n)
+
+ conv3_block2_2_conv (Conv2D)   (None, 72, 96, 128)  147584      ['conv3_block2_1_relu[0][0]']
+
+ conv3_block2_2_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block2_2_conv[0][0]']
+ ization)
+
+ conv3_block2_2_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block2_2_bn[0][0]']
+ n)
+
+ conv3_block2_3_conv (Conv2D)   (None, 72, 96, 512)  66048       ['conv3_block2_2_relu[0][0]']
+
+ conv3_block2_3_bn (BatchNormal  (None, 72, 96, 512)  2048       ['conv3_block2_3_conv[0][0]']
+ ization)
+
+ conv3_block2_add (Add)         (None, 72, 96, 512)  0           ['conv3_block1_out[0][0]',
+                                                                  'conv3_block2_3_bn[0][0]']
+
+ conv3_block2_out (Activation)  (None, 72, 96, 512)  0           ['conv3_block2_add[0][0]']
+
+ conv3_block3_1_conv (Conv2D)   (None, 72, 96, 128)  65664       ['conv3_block2_out[0][0]']
+
+ conv3_block3_1_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block3_1_conv[0][0]']
+ ization)
+
+ conv3_block3_1_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block3_1_bn[0][0]']
+ n)
+
+ conv3_block3_2_conv (Conv2D)   (None, 72, 96, 128)  147584      ['conv3_block3_1_relu[0][0]']
+
+ conv3_block3_2_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block3_2_conv[0][0]']
+ ization)
+
+ conv3_block3_2_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block3_2_bn[0][0]']
+ n)
+
+ conv3_block3_3_conv (Conv2D)   (None, 72, 96, 512)  66048       ['conv3_block3_2_relu[0][0]']
+
+ conv3_block3_3_bn (BatchNormal  (None, 72, 96, 512)  2048       ['conv3_block3_3_conv[0][0]']
+ ization)
+
+ data_augmentation (Sequential)  (None, 72, 72, 3)   7           ['input_1[0][0]']
+
+ conv3_block3_add (Add)         (None, 72, 96, 512)  0           ['conv3_block2_out[0][0]',
+                                                                  'conv3_block3_3_bn[0][0]']
+
+ patches (Patches)              (None, None, 108)    0           ['data_augmentation[0][0]']
+
+ conv3_block3_out (Activation)  (None, 72, 96, 512)  0           ['conv3_block3_add[0][0]']
+
+ patch_encoder (PatchEncoder)   (None, 144, 64)      16192       ['patches[0][0]']
+
+ conv3_block4_1_conv (Conv2D)   (None, 72, 96, 128)  65664       ['conv3_block3_out[0][0]']
+
+ layer_normalization (LayerNorm  (None, 144, 64)     128         ['patch_encoder[0][0]']
+ alization)
+
+ conv3_block4_1_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block4_1_conv[0][0]']
+ ization)
+
+ multi_head_attention (MultiHea  (None, 144, 64)     66368       ['layer_normalization[0][0]',
+ dAttention)                                                      'layer_normalization[0][0]']
+
+ conv3_block4_1_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block4_1_bn[0][0]']
+ n)
+
+ add (Add)                      (None, 144, 64)      0           ['multi_head_attention[0][0]',
+                                                                  'patch_encoder[0][0]']
+
+ conv3_block4_2_conv (Conv2D)   (None, 72, 96, 128)  147584      ['conv3_block4_1_relu[0][0]']
+
+ layer_normalization_1 (LayerNo  (None, 144, 64)     128         ['add[0][0]']
+ rmalization)
+
+ conv3_block4_2_bn (BatchNormal  (None, 72, 96, 128)  512        ['conv3_block4_2_conv[0][0]']
+ ization)
+
+ dense_1 (Dense)                (None, 144, 128)     8320        ['layer_normalization_1[0][0]']
+
+ conv3_block4_2_relu (Activatio  (None, 72, 96, 128)  0          ['conv3_block4_2_bn[0][0]']
+ n)
+
+ dropout (Dropout)              (None, 144, 128)     0           ['dense_1[0][0]']
+
+ conv3_block4_3_conv (Conv2D)   (None, 72, 96, 512)  66048       ['conv3_block4_2_relu[0][0]']
+
+ dense_2 (Dense)                (None, 144, 64)      8256        ['dropout[0][0]']
+
+ conv3_block4_3_bn (BatchNormal  (None, 72, 96, 512)  2048       ['conv3_block4_3_conv[0][0]']
+ ization)
+
+ dropout_1 (Dropout)            (None, 144, 64)      0           ['dense_2[0][0]']
+
+ conv3_block4_add (Add)         (None, 72, 96, 512)  0           ['conv3_block3_out[0][0]',
+                                                                  'conv3_block4_3_bn[0][0]']
+
+ add_1 (Add)                    (None, 144, 64)      0           ['dropout_1[0][0]',
+                                                                  'add[0][0]']
+
+ conv3_block4_out (Activation)  (None, 72, 96, 512)  0           ['conv3_block4_add[0][0]']
+
+ layer_normalization_2 (LayerNo  (None, 144, 64)     128         ['add_1[0][0]']
+ rmalization)
+
+ conv4_block1_1_conv (Conv2D)   (None, 36, 48, 256)  131328      ['conv3_block4_out[0][0]']
+
+ multi_head_attention_1 (MultiH  (None, 144, 64)     66368       ['layer_normalization_2[0][0]',
+ eadAttention)                                                    'layer_normalization_2[0][0]']
+
+ conv4_block1_1_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block1_1_conv[0][0]']
+ ization)
+
+ add_2 (Add)                    (None, 144, 64)      0           ['multi_head_attention_1[0][0]',
+                                                                  'add_1[0][0]']
+
+ conv4_block1_1_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block1_1_bn[0][0]']
+ n)
+
+ layer_normalization_3 (LayerNo  (None, 144, 64)     128         ['add_2[0][0]']
+ rmalization)
+
+ conv4_block1_2_conv (Conv2D)   (None, 36, 48, 256)  590080      ['conv4_block1_1_relu[0][0]']
+
+ dense_3 (Dense)                (None, 144, 128)     8320        ['layer_normalization_3[0][0]']
+
+ conv4_block1_2_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block1_2_conv[0][0]']
+ ization)
+
+ dropout_2 (Dropout)            (None, 144, 128)     0           ['dense_3[0][0]']
+
+ conv4_block1_2_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block1_2_bn[0][0]']
+ n)
+
+ dense_4 (Dense)                (None, 144, 64)      8256        ['dropout_2[0][0]']
+
+ conv4_block1_0_conv (Conv2D)   (None, 36, 48, 1024  525312      ['conv3_block4_out[0][0]']
+                                )
+
+ conv4_block1_3_conv (Conv2D)   (None, 36, 48, 1024  263168      ['conv4_block1_2_relu[0][0]']
+                                )
+
+ dropout_3 (Dropout)            (None, 144, 64)      0           ['dense_4[0][0]']
+
+ conv4_block1_0_bn (BatchNormal  (None, 36, 48, 1024  4096       ['conv4_block1_0_conv[0][0]']
+ ization)                       )
+
+ conv4_block1_3_bn (BatchNormal  (None, 36, 48, 1024  4096       ['conv4_block1_3_conv[0][0]']
+ ization)                       )
+
+ add_3 (Add)                    (None, 144, 64)      0           ['dropout_3[0][0]',
+                                                                  'add_2[0][0]']
+
+ conv4_block1_add (Add)         (None, 36, 48, 1024  0           ['conv4_block1_0_bn[0][0]',
+                                )                                 'conv4_block1_3_bn[0][0]']
+
+ layer_normalization_4 (LayerNo  (None, 144, 64)     128         ['add_3[0][0]']
+ rmalization)
+
+ conv4_block1_out (Activation)  (None, 36, 48, 1024  0           ['conv4_block1_add[0][0]']
+                                )
+
+ multi_head_attention_2 (MultiH  (None, 144, 64)     66368       ['layer_normalization_4[0][0]',
+ eadAttention)                                                    'layer_normalization_4[0][0]']
+
+ conv4_block2_1_conv (Conv2D)   (None, 36, 48, 256)  262400      ['conv4_block1_out[0][0]']
+
+ add_4 (Add)                    (None, 144, 64)      0           ['multi_head_attention_2[0][0]',
+                                                                  'add_3[0][0]']
+
+ conv4_block2_1_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block2_1_conv[0][0]']
+ ization)
+
+ layer_normalization_5 (LayerNo  (None, 144, 64)     128         ['add_4[0][0]']
+ rmalization)
+
+ conv4_block2_1_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block2_1_bn[0][0]']
+ n)
+
+ dense_5 (Dense)                (None, 144, 128)     8320        ['layer_normalization_5[0][0]']
+
+ conv4_block2_2_conv (Conv2D)   (None, 36, 48, 256)  590080      ['conv4_block2_1_relu[0][0]']
+
+ dropout_4 (Dropout)            (None, 144, 128)     0           ['dense_5[0][0]']
+
+ conv4_block2_2_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block2_2_conv[0][0]']
+ ization)
+
+ dense_6 (Dense)                (None, 144, 64)      8256        ['dropout_4[0][0]']
+
+ conv4_block2_2_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block2_2_bn[0][0]']
+ n)
+
+ dropout_5 (Dropout)            (None, 144, 64)      0           ['dense_6[0][0]']
+
+ conv4_block2_3_conv (Conv2D)   (None, 36, 48, 1024  263168      ['conv4_block2_2_relu[0][0]']
+                                )
+
+ add_5 (Add)                    (None, 144, 64)      0           ['dropout_5[0][0]',
+                                                                  'add_4[0][0]']
+
+ conv4_block2_3_bn (BatchNormal  (None, 36, 48, 1024  4096       ['conv4_block2_3_conv[0][0]']
+ ization)                       )
+
+ layer_normalization_6 (LayerNo  (None, 144, 64)     128         ['add_5[0][0]']
+ rmalization)
+
+ conv4_block2_add (Add)         (None, 36, 48, 1024  0           ['conv4_block1_out[0][0]',
+                                )                                 'conv4_block2_3_bn[0][0]']
+
+ multi_head_attention_3 (MultiH  (None, 144, 64)     66368       ['layer_normalization_6[0][0]',
+ eadAttention)                                                    'layer_normalization_6[0][0]']
+
+ conv4_block2_out (Activation)  (None, 36, 48, 1024  0           ['conv4_block2_add[0][0]']
+                                )
+
+ add_6 (Add)                    (None, 144, 64)      0           ['multi_head_attention_3[0][0]',
+                                                                  'add_5[0][0]']
+
+ conv4_block3_1_conv (Conv2D)   (None, 36, 48, 256)  262400      ['conv4_block2_out[0][0]']
+
+ layer_normalization_7 (LayerNo  (None, 144, 64)     128         ['add_6[0][0]']
+ rmalization)
+
+ conv4_block3_1_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block3_1_conv[0][0]']
+ ization)
+
+ dense_7 (Dense)                (None, 144, 128)     8320        ['layer_normalization_7[0][0]']
+
+ conv4_block3_1_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block3_1_bn[0][0]']
+ n)
+
+ dropout_6 (Dropout)            (None, 144, 128)     0           ['dense_7[0][0]']
+
+ conv4_block3_2_conv (Conv2D)   (None, 36, 48, 256)  590080      ['conv4_block3_1_relu[0][0]']
+
+ dense_8 (Dense)                (None, 144, 64)      8256        ['dropout_6[0][0]']
+
+ conv4_block3_2_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block3_2_conv[0][0]']
+ ization)
+
+ dropout_7 (Dropout)            (None, 144, 64)      0           ['dense_8[0][0]']
+
+ conv4_block3_2_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block3_2_bn[0][0]']
+ n)
+
+ add_7 (Add)                    (None, 144, 64)      0           ['dropout_7[0][0]',
+                                                                  'add_6[0][0]']
+
+ conv4_block3_3_conv (Conv2D)   (None, 36, 48, 1024  263168      ['conv4_block3_2_relu[0][0]']
+                                )
+
+ layer_normalization_8 (LayerNo  (None, 144, 64)     128         ['add_7[0][0]']
+ rmalization)
+
+ conv4_block3_3_bn (BatchNormal  (None, 36, 48, 1024  4096       ['conv4_block3_3_conv[0][0]']
+ ization)                       )
+
+ multi_head_attention_4 (MultiH  (None, 144, 64)     66368       ['layer_normalization_8[0][0]',
+ eadAttention)                                                    'layer_normalization_8[0][0]']
+
+ conv4_block3_add (Add)         (None, 36, 48, 1024  0           ['conv4_block2_out[0][0]',
+                                )                                 'conv4_block3_3_bn[0][0]']
+
+ add_8 (Add)                    (None, 144, 64)      0           ['multi_head_attention_4[0][0]',
+                                                                  'add_7[0][0]']
+
+ conv4_block3_out (Activation)  (None, 36, 48, 1024  0           ['conv4_block3_add[0][0]']
+                                )
+
+ layer_normalization_9 (LayerNo  (None, 144, 64)     128         ['add_8[0][0]']
+ rmalization)
+
+ conv4_block4_1_conv (Conv2D)   (None, 36, 48, 256)  262400      ['conv4_block3_out[0][0]']
+
+ dense_9 (Dense)                (None, 144, 128)     8320        ['layer_normalization_9[0][0]']
+
+ conv4_block4_1_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block4_1_conv[0][0]']
+ ization)
+
+ dropout_8 (Dropout)            (None, 144, 128)     0           ['dense_9[0][0]']
+
+ conv4_block4_1_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block4_1_bn[0][0]']
+ n)
+
+ dense_10 (Dense)               (None, 144, 64)      8256        ['dropout_8[0][0]']
+
+ conv4_block4_2_conv (Conv2D)   (None, 36, 48, 256)  590080      ['conv4_block4_1_relu[0][0]']
+
+ dropout_9 (Dropout)            (None, 144, 64)      0           ['dense_10[0][0]']
+
+ conv4_block4_2_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block4_2_conv[0][0]']
+ ization)
+
+ add_9 (Add)                    (None, 144, 64)      0           ['dropout_9[0][0]',
+                                                                  'add_8[0][0]']
+
+ conv4_block4_2_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block4_2_bn[0][0]']
+ n)
+
+ layer_normalization_10 (LayerN  (None, 144, 64)     128         ['add_9[0][0]']
+ ormalization)
+
+ conv4_block4_3_conv (Conv2D)   (None, 36, 48, 1024  263168      ['conv4_block4_2_relu[0][0]']
+                                )
+
+ multi_head_attention_5 (MultiH  (None, 144, 64)     66368       ['layer_normalization_10[0][0]',
+ eadAttention)                                                    'layer_normalization_10[0][0]']
+
+ conv4_block4_3_bn (BatchNormal  (None, 36, 48, 1024  4096       ['conv4_block4_3_conv[0][0]']
+ ization)                       )
+
+ add_10 (Add)                   (None, 144, 64)      0           ['multi_head_attention_5[0][0]',
+                                                                  'add_9[0][0]']
+
+ conv4_block4_add (Add)         (None, 36, 48, 1024  0           ['conv4_block3_out[0][0]',
+                                )                                 'conv4_block4_3_bn[0][0]']
+
+ layer_normalization_11 (LayerN  (None, 144, 64)     128         ['add_10[0][0]']
+ ormalization)
+
+ conv4_block4_out (Activation)  (None, 36, 48, 1024  0           ['conv4_block4_add[0][0]']
+                                )
+
+ dense_11 (Dense)               (None, 144, 128)     8320        ['layer_normalization_11[0][0]']
+
+ conv4_block5_1_conv (Conv2D)   (None, 36, 48, 256)  262400      ['conv4_block4_out[0][0]']
+
+ dropout_10 (Dropout)           (None, 144, 128)     0           ['dense_11[0][0]']
+
+ conv4_block5_1_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block5_1_conv[0][0]']
+ ization)
+
+ dense_12 (Dense)               (None, 144, 64)      8256        ['dropout_10[0][0]']
+
+ conv4_block5_1_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block5_1_bn[0][0]']
+ n)
+
+ dropout_11 (Dropout)           (None, 144, 64)      0           ['dense_12[0][0]']
+
+ conv4_block5_2_conv (Conv2D)   (None, 36, 48, 256)  590080      ['conv4_block5_1_relu[0][0]']
+
+ add_11 (Add)                   (None, 144, 64)      0           ['dropout_11[0][0]',
+                                                                  'add_10[0][0]']
+
+ conv4_block5_2_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block5_2_conv[0][0]']
+ ization)
+
+ layer_normalization_12 (LayerN  (None, 144, 64)     128         ['add_11[0][0]']
+ ormalization)
+
+ conv4_block5_2_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block5_2_bn[0][0]']
+ n)
+
+ multi_head_attention_6 (MultiH  (None, 144, 64)     66368       ['layer_normalization_12[0][0]',
+ eadAttention)                                                    'layer_normalization_12[0][0]']
+
+ conv4_block5_3_conv (Conv2D)   (None, 36, 48, 1024  263168      ['conv4_block5_2_relu[0][0]']
+                                )
+
+ add_12 (Add)                   (None, 144, 64)      0           ['multi_head_attention_6[0][0]',
+                                                                  'add_11[0][0]']
+
+ conv4_block5_3_bn (BatchNormal  (None, 36, 48, 1024  4096       ['conv4_block5_3_conv[0][0]']
+ ization)                       )
+
+ layer_normalization_13 (LayerN  (None, 144, 64)     128         ['add_12[0][0]']
+ ormalization)
+
+ conv4_block5_add (Add)         (None, 36, 48, 1024  0           ['conv4_block4_out[0][0]',
+                                )                                 'conv4_block5_3_bn[0][0]']
+
+ dense_13 (Dense)               (None, 144, 128)     8320        ['layer_normalization_13[0][0]']
+
+ conv4_block5_out (Activation)  (None, 36, 48, 1024  0           ['conv4_block5_add[0][0]']
+                                )
+
+ dropout_12 (Dropout)           (None, 144, 128)     0           ['dense_13[0][0]']
+
+ conv4_block6_1_conv (Conv2D)   (None, 36, 48, 256)  262400      ['conv4_block5_out[0][0]']
+
+ dense_14 (Dense)               (None, 144, 64)      8256        ['dropout_12[0][0]']
+
+ conv4_block6_1_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block6_1_conv[0][0]']
+ ization)
+
+ dropout_13 (Dropout)           (None, 144, 64)      0           ['dense_14[0][0]']
+
+ conv4_block6_1_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block6_1_bn[0][0]']
+ n)
+
+ add_13 (Add)                   (None, 144, 64)      0           ['dropout_13[0][0]',
+                                                                  'add_12[0][0]']
+
+ conv4_block6_2_conv (Conv2D)   (None, 36, 48, 256)  590080      ['conv4_block6_1_relu[0][0]']
+
+ layer_normalization_14 (LayerN  (None, 144, 64)     128         ['add_13[0][0]']
+ ormalization)
+
+ conv4_block6_2_bn (BatchNormal  (None, 36, 48, 256)  1024       ['conv4_block6_2_conv[0][0]']
+ ization)
+
+ multi_head_attention_7 (MultiH  (None, 144, 64)     66368       ['layer_normalization_14[0][0]',
+ eadAttention)                                                    'layer_normalization_14[0][0]']
+
+ conv4_block6_2_relu (Activatio  (None, 36, 48, 256)  0          ['conv4_block6_2_bn[0][0]']
+ n)
+
+ add_14 (Add)                   (None, 144, 64)      0           ['multi_head_attention_7[0][0]',
+                                                                  'add_13[0][0]']
+
+ average_pooling2d (AveragePool  (None, 1, 1, 256)   0           ['conv4_block6_2_relu[0][0]']
+ ing2D)
+
+ layer_normalization_15 (LayerN  (None, 144, 64)     128         ['add_14[0][0]']
+ ormalization)
+
+ conv2d (Conv2D)                (None, 1, 1, 256)    65792       ['average_pooling2d[0][0]']
+
+ dense_15 (Dense)               (None, 144, 128)     8320        ['layer_normalization_15[0][0]']
+
+ batch_normalization (BatchNorm  (None, 1, 1, 256)   1024        ['conv2d[0][0]']
+ alization)
+
+ conv2d_1 (Conv2D)              (None, 36, 48, 256)  65536       ['conv4_block6_2_relu[0][0]']
+
+ conv2d_2 (Conv2D)              (None, 36, 48, 256)  589824      ['conv4_block6_2_relu[0][0]']
+
+ conv2d_3 (Conv2D)              (None, 36, 48, 256)  589824      ['conv4_block6_2_relu[0][0]']
+
+ conv2d_4 (Conv2D)              (None, 36, 48, 256)  589824      ['conv4_block6_2_relu[0][0]']
+
+ dropout_14 (Dropout)           (None, 144, 128)     0           ['dense_15[0][0]']
+
+ tf.nn.relu (TFOpLambda)        (None, 1, 1, 256)    0           ['batch_normalization[0][0]']
+
+ batch_normalization_1 (BatchNo  (None, 36, 48, 256)  1024       ['conv2d_1[0][0]']
+ rmalization)
+
+ batch_normalization_2 (BatchNo  (None, 36, 48, 256)  1024       ['conv2d_2[0][0]']
+ rmalization)
+
+ batch_normalization_3 (BatchNo  (None, 36, 48, 256)  1024       ['conv2d_3[0][0]']
+ rmalization)
+
+ batch_normalization_4 (BatchNo  (None, 36, 48, 256)  1024       ['conv2d_4[0][0]']
+ rmalization)
+
+ dense_16 (Dense)               (None, 144, 64)      8256        ['dropout_14[0][0]']
+
+ up_sampling2d (UpSampling2D)   (None, 36, 48, 256)  0           ['tf.nn.relu[0][0]']
+
+ tf.nn.relu_1 (TFOpLambda)      (None, 36, 48, 256)  0           ['batch_normalization_1[0][0]']
+
+ tf.nn.relu_2 (TFOpLambda)      (None, 36, 48, 256)  0           ['batch_normalization_2[0][0]']
+
+ tf.nn.relu_3 (TFOpLambda)      (None, 36, 48, 256)  0           ['batch_normalization_3[0][0]']
+
+ tf.nn.relu_4 (TFOpLambda)      (None, 36, 48, 256)  0           ['batch_normalization_4[0][0]']
+
+ dropout_15 (Dropout)           (None, 144, 64)      0           ['dense_16[0][0]']
+
+ concatenate (Concatenate)      (None, 36, 48, 1280  0           ['up_sampling2d[0][0]',
+                                )                                 'tf.nn.relu_1[0][0]',
+                                                                  'tf.nn.relu_2[0][0]',
+                                                                  'tf.nn.relu_3[0][0]',
+                                                                  'tf.nn.relu_4[0][0]']
+
+ add_15 (Add)                   (None, 144, 64)      0           ['dropout_15[0][0]',
+                                                                  'add_14[0][0]']
+
+ conv2d_5 (Conv2D)              (None, 36, 48, 256)  327680      ['concatenate[0][0]']
+
+ layer_normalization_16 (LayerN  (None, 144, 64)     128         ['add_15[0][0]']
+ ormalization)
+
+ batch_normalization_5 (BatchNo  (None, 36, 48, 256)  1024       ['conv2d_5[0][0]']
+ rmalization)
+
+ conv2d_6 (Conv2D)              (None, 144, 192, 48  3072        ['conv2_block3_2_relu[0][0]']
+                                )
+
+ flatten (Flatten)              (None, 9216)         0           ['layer_normalization_16[0][0]']
+
+ tf.nn.relu_5 (TFOpLambda)      (None, 36, 48, 256)  0           ['batch_normalization_5[0][0]']
+
+ batch_normalization_6 (BatchNo  (None, 144, 192, 48  192        ['conv2d_6[0][0]']
+ rmalization)                   )
+
+ dropout_16 (Dropout)           (None, 9216)         0           ['flatten[0][0]']
+
+ up_sampling2d_1 (UpSampling2D)  (None, 144, 192, 25  0          ['tf.nn.relu_5[0][0]']
+                                6)
+
+ tf.nn.relu_6 (TFOpLambda)      (None, 144, 192, 48  0           ['batch_normalization_6[0][0]']
+                                )
+
+ dense_17 (Dense)               (None, 2048)         16876416    ['dropout_16[0][0]']
+
+ concatenate_1 (Concatenate)    (None, 144, 192, 30  0           ['up_sampling2d_1[0][0]',
+                                4)                                'tf.nn.relu_6[0][0]']
+
+ dropout_17 (Dropout)           (None, 2048)         0           ['dense_17[0][0]']
+
+ dense_18 (Dense)               (None, 1024)         2098176     ['dropout_17[0][0]']
+
+ tf.compat.v1.shape (TFOpLambda  (4,)                0           ['concatenate_1[0][0]']
+ )
+
+ dropout_18 (Dropout)           (None, 1024)         0           ['dense_18[0][0]']
+
+ tf.__operators__.getitem (Slic  ()                  0           ['tf.compat.v1.shape[0][0]']
+ ingOpLambda)
+
+ tf.__operators__.getitem_1 (Sl  ()                  0           ['tf.compat.v1.shape[0][0]']
+ icingOpLambda)
+
+ tf.__operators__.getitem_2 (Sl  ()                  0           ['tf.compat.v1.shape[0][0]']
+ icingOpLambda)
+
+ tf.reshape (TFOpLambda)        (None, 144, 192, 1)  0           ['dropout_18[0][0]',
+                                                                  'tf.__operators__.getitem[0][0]'
+                                                                 , 'tf.__operators__.getitem_1[0][
+                                                                 0]',
+                                                                  'tf.__operators__.getitem_2[0][0
+                                                                 ]']
+
+ concatenate_2 (Concatenate)    (None, 144, 192, 30  0           ['concatenate_1[0][0]',
+                                5)                                'tf.reshape[0][0]']
+
+ conv2d_7 (Conv2D)              (None, 144, 192, 25  702720      ['concatenate_2[0][0]']
+                                6)
+
+ batch_normalization_7 (BatchNo  (None, 144, 192, 25  1024       ['conv2d_7[0][0]']
+ rmalization)                   6)
+
+ tf.nn.relu_7 (TFOpLambda)      (None, 144, 192, 25  0           ['batch_normalization_7[0][0]']
+                                6)
+
+ conv2d_8 (Conv2D)              (None, 144, 192, 25  589824      ['tf.nn.relu_7[0][0]']
+                                6)
+
+ batch_normalization_8 (BatchNo  (None, 144, 192, 25  1024       ['conv2d_8[0][0]']
+ rmalization)                   6)
+
+ tf.nn.relu_8 (TFOpLambda)      (None, 144, 192, 25  0           ['batch_normalization_8[0][0]']
+                                6)
+
+ up_sampling2d_2 (UpSampling2D)  (None, 576, 768, 25  0          ['tf.nn.relu_8[0][0]']
+                                6)
+
+ conv2d_9 (Conv2D)              (None, 576, 768, 16  5140        ['up_sampling2d_2[0][0]']
+                                )
+
+==================================================================================================
+Total params: 31,516,059
+Trainable params: 31,454,316
+Non-trainable params: 61,743
+__________________________________________________________________________________________________
+Epoch 1/20
